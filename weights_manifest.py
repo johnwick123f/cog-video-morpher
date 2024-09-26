@@ -30,17 +30,7 @@ class WeightsManifest:
                 f"Downloading updated weights manifest from {UPDATED_WEIGHTS_MANIFEST_URL}"
             )
             start = time.time()
-            subprocess.check_call(
-                [
-                    "pget",
-                    "--log-level",
-                    "warn",
-                    "-f",
-                    UPDATED_WEIGHTS_MANIFEST_URL,
-                    UPDATED_WEIGHTS_MANIFEST_PATH,
-                ],
-                close_fds=False,
-            )
+            os.system(f"wget {UPDATED_WEIGHTS_MANIFEST_URL} -O {UPDATED_WEIGHTS_MANIFEST_PATH}")
             print(
                 f"Downloading {UPDATED_WEIGHTS_MANIFEST_URL} took: {(time.time() - start):.2f}s"
             )
