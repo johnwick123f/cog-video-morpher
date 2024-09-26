@@ -60,9 +60,7 @@ class WeightsDownloader:
 
         print(f"⏳ Downloading {weight_str} to {dest}")
         start = time.time()
-        subprocess.check_call(
-            ["pget", "--log-level", "warn", "-xf", url, dest], close_fds=False
-        )
+        os.system(f"wget {url} -O {dest}")
         elapsed_time = time.time() - start
         try:
             file_size_bytes = os.path.getsize(
